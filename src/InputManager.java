@@ -11,7 +11,7 @@ public class InputManager {
     public int getFrameCount() {
         System.out.print("Please enter the number of frames: ");
         int frameCount = scanner.nextInt();
-        scanner.nextLine(); // Bellekte kalan boşluğu (alt satır karakterini) temizler
+        scanner.nextLine(); 
         return frameCount;
     }
 
