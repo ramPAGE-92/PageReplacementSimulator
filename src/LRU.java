@@ -1,9 +1,8 @@
 import java.util.LinkedList;
 
 public class LRU implements Algorithm {
-    private LinkedList<Integer> memory = new LinkedList<>();
-
     public PageStats simulate(int frames, int[] referenceString){
+        LinkedList<Integer> memory = new LinkedList<>();
         int pageFaults = 0, pageHits = 0;
         boolean hasSpace;
 
