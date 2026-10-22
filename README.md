@@ -13,9 +13,11 @@ There is no single best answer in practical scenarios. This simulator lets you r
 **Simulate page replacement**  
 Provide a sequence of page requests (reference string) and a number of memory frames. The simulator replays the sequence and evaluates the performance of three core algorithms simultaneously:
 
-* **FIFO:** Evict the page that arrived first.
-* **LRU:** Evict the page that has not been used for the longest time.
-* **Optimal:** Evict the page that will not be needed for the longest time (theoretical best, used as a benchmark).
+| Algorithm | Idea |
+|---|---|
+| **FIFO** | Evict the page that arrived first. |
+| **LRU** | Evict the page that has not been used for the longest time. |
+| **Optimal** | Evict the page that will not be needed for the longest time (theoretical best, used as a benchmark). |
 
 You get the total page fault count and page hit count for each algorithm in a neat comparative view.
 
@@ -25,34 +27,38 @@ You get the total page fault count and page hit count for each algorithm in a ne
 - Anyone who wants to experiment with how workload and memory frame sizes affect performance.
 
 ## A Quick Example
-Reference string 7 0 1 2 0 3 0 4 2 3 with 3 frames:
+Reference string `7 0 1 2 0 3 0 4 2 3` with `3` frames:
 
-* **FIFO:** 9 Faults, 1 Hit
-* **LRU:** 8 Faults, 2 Hits
-* **Optimal:** 6 Faults, 4 Hits
+| Algorithm | Page Faults | Hits |
+|---|---|---|
+| **FIFO** | 9 | 1 |
+| **LRU** | 8 | 2 |
+| **Optimal** | 6 | 4 |
 
 *Optimal never does worse than the others. The gap between it and FIFO or LRU shows how much a real algorithm loses by not knowing the future.*
 
 ## Running It
 Requirements: Java Development Kit (JDK) 8 or later, Git.
 
-git clone <YOUR_REPOSITORY_LINK_HERE>
-cd PageReplacementSimulator
+    git clone https://github.com/ramPAGE-92/PageReplacementSimulator.git
+    cd PageReplacementSimulator
 
 1. Compile all the Java files:
-   javac *.java
+    javac *.java
 
 2. Start the application:
-   java Simulator
+    java Simulator
 
 ## Built With
 Java (100% Pure OOP).  
 The code is organized cleanly using interfaces. Every algorithm implements a shared Algorithm interface, returning a structured PageStats object, meaning new algorithms can be easily added without touching the core simulator logic.
 
 ## Team
-* Ege Tuğrul - 202303001092
-* Faruk Tanyeri - 202303001071
-* Enes Kanal - 202303001029
-* Eylül Azra Karlıdağ - 202403001052
+| Name | Student No. |
+|---|---|
+| Ege Tuğrul | 202303001092 |
+| Faruk Tanyeri | 202303001071 |
+| Enes Kanal | 202303001029 |
+| Eylül Azra Karlıdağ | 202403001052 |
 
-Developed for the Operating Systems course at Doğuş Üniversitesi.
+*Developed for the Operating Systems course at Doğuş Üniversitesi.*
