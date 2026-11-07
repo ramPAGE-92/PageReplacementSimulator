@@ -9,32 +9,44 @@ public class Simulator {
         System.out.println("=== PAGE REPLACEMENT SIMULATOR ===");
         
         while (true) {
-            // 1. Verileri alıyoruz
+           
             int frames = inputManager.getFrameCount();
             int[] referenceString = inputManager.getReferenceString();
             
-            System.out.println("\n--- SIMULATION RESULTS ---");
+            System.out.println("\n===========================================");
+            System.out.println("  ramPAGE - ALGORİTMA SEÇİM MENÜSÜ");
+            System.out.println("===========================================");
+            System.out.println("1 - FIFO (First-In, First-Out)");
+            System.out.println("2 - LRU (Least Recently Used)");
+            System.out.println("3 - Optimal");
+            System.out.print("\nÇalıştırmak istediğiniz algoritmayı seçin (1/2/3): ");
             
-            // 2. Tüm algoritmaları sırasıyla çalıştırıp sonuçları ekrana basıyoruz
+            int secim = scanner.nextInt();
+            System.out.println("\nSimülasyon hazırlanıyor...\n");
             
-            // FIFO
-            Algorithm fifo = new FIFO();
-            PageStats fifoSonuc = fifo.simulate(frames, referenceString);
-            System.out.println("[FIFO]    Page Hits: " + fifoSonuc.pageHits + "  |  Page Faults: " + fifoSonuc.pageFaults);
-            
-            // LRU
-            Algorithm lru = new LRU();
-            PageStats lruSonuc = lru.simulate(frames, referenceString);
-            System.out.println("[LRU]     Page Hits: " + lruSonuc.pageHits + "  |  Page Faults: " + lruSonuc.pageFaults);
-            
-            // Optimal
-            Algorithm optimal = new Optimal();
-            PageStats optimalSonuc = optimal.simulate(frames, referenceString);
-            System.out.println("[Optimal] Page Hits: " + optimalSonuc.pageHits + "  |  Page Faults: " + optimalSonuc.pageFaults);
-            
+            switch (secim) {
+                case 1:
+                    Algorithm fifo = new FIFO();
+                    PageStats fifoSonuc = fifo.simulate(frames, referenceString);
+                    System.out.println("\n[SONUÇ] FIFO Page Hits: " + fifoSonuc.pageHits + "  |  Page Faults: " + fifoSonuc.pageFaults);
+                    break;
+                case 2:
+                    Algorithm lru = new LRU();
+                    PageStats lruSonuc = lru.simulate(frames, referenceString);
+                    System.out.println("\n[SONUÇ] LRU Page Hits: " + lruSonuc.pageHits + "  |  Page Faults: " + lruSonuc.pageFaults);
+                    break;
+                case 3:
+                    Algorithm optimal = new Optimal();
+                    PageStats optimalSonuc = optimal.simulate(frames, referenceString);
+                    System.out.println("\n[SONUÇ] Optimal Page Hits: " + optimalSonuc.pageHits + "  |  Page Faults: " + optimalSonuc.pageFaults);
+                    break;
+                default:
+                    System.out.println("❌ Hatalı seçim yaptınız! Lütfen geçerli bir algoritma (1, 2 veya 3) seçin.");
+                    break;
+            }
             System.out.println("----------------------------");
             
-            // 3. Tekrar denemek isteyip istemediğini soruyoruz
+            
             System.out.print("\nWould you like to test another sequence? (Y/N): ");
             String devam = scanner.next();
             

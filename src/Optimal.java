@@ -1,4 +1,3 @@
-// Optimal Page Replacement Algorithm Implementation - Eylul
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,13 @@ public class Optimal implements Algorithm {
 
         for (int i = 0; i < referenceString.length; i++) {
             int page = referenceString[i];
+            
+            System.out.print("Adım " + (i + 1) + " | Gelen Sayfa: [" + page + "] --> ");
 
             // Case 1: Page hit (page already in memory)
             if (memory.contains(page)) {
                 pageHits++;
+                System.out.println("✅ PAGE HIT (Sayfa zaten RAM'de)");
             } 
             // Case 2: Page fault (page not in memory)
             else {
@@ -24,12 +26,34 @@ public class Optimal implements Algorithm {
                 // If memory still has space, just add the page
                 if (memory.size() < frames) {
                     memory.add(page);
+                    System.out.println("❌ PAGE FAULT (Zorunlu - Boş çerçeveye eklendi)");
                 } 
                 // Memory is full: find the optimal page to replace
                 else {
                     int victimIndex = findPageToReplace(memory, referenceString, i + 1);
+                    int evictedPage = memory.get(victimIndex); // Silinmeden önce kurbanın adını alıyoruz
                     memory.set(victimIndex, page);
+                    System.out.println("❌ PAGE FAULT (RAM Dolu! Çıkarılan Sayfa: " + evictedPage + " [Gelecekte En Az İhtiyaç Duyulan])");
                 }
+            }
+            
+            // RAM'in o anki içini görselleştir
+            System.out.print("Güncel RAM Durumu: [ ");
+            for (int j = 0; j < frames; j++) {
+                if (j < memory.size()) {
+                    System.out.print(memory.get(j) + " ");
+                } else {
+                    System.out.print("- "); // Boş çerçeveler için tire
+                }
+                if (j < frames - 1) System.out.print("| ");
+            }
+            System.out.println("]\n");
+            
+            // Sistemi uyutarak animasyon etkisi yaratma
+            try {
+                Thread.sleep(1200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
             }
         }
 
