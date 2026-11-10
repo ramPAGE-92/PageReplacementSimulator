@@ -1,7 +1,14 @@
+package main.core;
+
 import java.util.Scanner;
+import main.algorithms.Algorithm;
+import main.algorithms.FIFO;
+import main.algorithms.LRU;
+import main.algorithms.Optimal;
+import main.io.InputManager;
+import main.models.PageStats;
 
-public class Simulator {
-
+public class InteractiveRunner {
     public static void main(String[] args) {
         InputManager inputManager = new InputManager();
         Scanner scanner = new Scanner(System.in);

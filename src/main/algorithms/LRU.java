@@ -1,4 +1,7 @@
+package main.algorithms;
+
 import java.util.LinkedList;
+import main.models.PageStats;
 
 public class LRU implements Algorithm {
     
@@ -50,7 +53,7 @@ public class LRU implements Algorithm {
             
             // Sistemi uyutarak animasyon etkisi yaratma
             try {
-                Thread.sleep(1200);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

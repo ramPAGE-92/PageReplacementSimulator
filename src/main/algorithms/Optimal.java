@@ -1,5 +1,8 @@
+package main.algorithms;
+
 import java.util.ArrayList;
 import java.util.List;
+import main.models.PageStats;
 
 public class Optimal implements Algorithm {
 
@@ -51,7 +54,7 @@ public class Optimal implements Algorithm {
             
             // Sistemi uyutarak animasyon etkisi yaratma
             try {
-                Thread.sleep(1200);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

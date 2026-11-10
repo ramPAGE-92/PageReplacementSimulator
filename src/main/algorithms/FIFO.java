@@ -1,5 +1,8 @@
+package main.algorithms;
+
 import java.util.LinkedList;
 import java.util.Queue;
+import main.models.PageStats;
 import java.util.HashSet;
 
 public class FIFO implements Algorithm {
@@ -54,7 +57,7 @@ public class FIFO implements Algorithm {
             
             // Sistemi uyutarak animasyon etkisi yaratma
             try {
-                Thread.sleep(1200);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
